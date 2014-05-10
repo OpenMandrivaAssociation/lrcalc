@@ -8,6 +8,7 @@ URL:		http://math.rutgers.edu/~asbuch/lrcalc
 Source0:	http://math.rutgers.edu/~asbuch/lrcalc/%{name}-sage-%{version}.tar.gz
 Source1:	lrcalc.module.in
 Source2:	%{name}.rpmlintrc
+Requires:	environment-modules
 
 %description
 The "Littlewood-Richardson Calculator" is a package of C and Maple programs
