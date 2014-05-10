@@ -1,12 +1,13 @@
 Name:		lrcalc
 Group:		Sciences/Mathematics
 Version:	1.1.6
-Release:	2.beta
+Release:	3.beta
 License:	GPLv2+
 Summary:	Littlewood-Richardson Calculator
 URL:		http://math.rutgers.edu/~asbuch/lrcalc
 Source0:	http://math.rutgers.edu/~asbuch/lrcalc/%{name}-sage-%{version}.tar.gz
-Source1:	%{name}.rpmlintrc
+Source1:	lrcalc.module.in
+Source2:	%{name}.rpmlintrc
 
 %description
 The "Littlewood-Richardson Calculator" is a package of C and Maple programs
@@ -37,6 +38,10 @@ make CFLAGS="%{optflags}" %{?_smp_mflags}
 make DESTDIR=%{buildroot} install
 rm %{buildroot}%{_libdir}/*.la
 
+mkdir -p %{buildroot}%{_datadir}/Modules/modulefiles
+sed 's#@BINDIR@#'%{_libdir}/%{name}'#g;' < %{SOURCE1} > \
+    %{buildroot}%{_datadir}/Modules/modulefiles/%{name}-%{_arch} 
+
 %check
 make check
 
@@ -48,6 +53,7 @@ make check
 %doc README
 %{_libdir}/%{name}
 %{_libdir}/lib%{name}.so.*
+%{_datadir}/Modules/modulefiles/%{name}-%{_arch}
 
 %files		devel
 %{_includedir}/%{name}
