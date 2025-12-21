@@ -10,6 +10,11 @@ Source1:	lrcalc.module.in
 Source2:	%{name}.rpmlintrc
 Requires:	environment-modules
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 %description
 The "Littlewood-Richardson Calculator" is a package of C and Maple programs
 for computing Littlewood-Richardson coefficients. The C programs form the
